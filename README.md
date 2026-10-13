@@ -187,3 +187,6 @@ Cloud deployment to **Azure App Service** and **Azure Database for PostgreSQL Fl
 In accordance with ethical AI disclosure standards:
 - **AI Tooling Used**: Antigravity IDE (Gemini agent) assisted in boilerplate scaffolding, generating synthetic data generation scripts, writing unit test cases, and implementing components from specification documents.
 - **Human Engineering & Architecture**: Problem definition, buy-box mathematical scoring formulas, record-linkage dedupe heuristics, system tradeoffs, code review, and verification were designed and evaluated against the hiring challenge criteria.
+<img width="1863" height="817" alt="image" src="https://github.com/user-attachments/assets/9aea7034-5615-4e00-9b00-3a15dffd20ed" />
+<img width="1902" height="907" alt="image" src="https://github.com/user-attachments/assets/b4f18d86-384c-4ed3-a06a-fabaa0f0ac17" />
+
