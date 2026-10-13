@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CompanyStatus {
+  NEW
+  SHORTLISTED
+  REJECTED
+}
+
+model Company {
+  id                String        @id @default(cuid())
+  name              String
+  normalizedName    String
+  industry          String
+  website           String?
+  domain            String?
+  phone             String?
+  email             String?
+  street            String?
+  city              String
+  state             String
+  zip               String?
+  employeeCount     Int?
+  estimatedRevenue  Int?
+  revenueConfidence Float?
+  yearFounded       Int?
+  ownerName         String?
+  ownerTitle        String?
+  ownerLinkedinUrl  String?
+  rating            Float?
+  reviewCount       Int?
+  sources           String[]
+  status            CompanyStatus @default(NEW)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  results           SearchResult[]
+
+  @@index([state, industry])
+  @@index([domain])
+  @@index([normalizedName, city, state])
+}
+
+model Search {
+  id             String         @id @default(cuid())
+  buyBox         Json
+  buyBoxHash     String
+  candidateCount Int
+  resultCount    Int
+  durationMs     Int
+  createdAt      DateTime       @default(now())
+  results        SearchResult[]
+
+  @@index([buyBoxHash])
+}
+
+model SearchResult {
+  id         String  @id @default(cuid())
+  searchId   String
+  companyId  String
+  rank       Int
+  score      Int
+  confidence Float
+  breakdown  Json
+  search     Search  @relation(fields: [searchId], references: [id], onDelete: Cascade)
+  company    Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([searchId, companyId])
+  @@index([searchId, rank])
+}
