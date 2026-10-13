@@ -6,7 +6,7 @@ export default defineConfig({
     include: ['src/**/*.test.ts'],
     env: {
       NODE_ENV: 'test',
-      DATABASE_URL: 'postgresql://radar:radar@localhost:5432/radar?schema=public',
+      DATABASE_URL: 'postgresql://radar:radar@localhost:5433/radar?schema=public',
     },
   },
 });
